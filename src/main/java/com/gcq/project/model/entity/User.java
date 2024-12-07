@@ -61,6 +61,12 @@ public class User implements Serializable {
     private Date updateTime;
 
     /**
+     * 用户密钥
+     */
+    private String accessKey;
+    private String secretKey;
+
+    /**
      * 是否删除
      */
     @TableLogic

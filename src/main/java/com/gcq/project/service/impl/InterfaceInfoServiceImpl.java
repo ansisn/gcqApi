@@ -2,18 +2,24 @@ package com.gcq.project.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.gcq.gcqclientsdk.client.GcqClient;
+import com.gcq.gcqclientsdk.model.UserLogin;
 import com.gcq.project.common.ErrorCode;
 import com.gcq.project.exception.BusinessException;
 import com.gcq.project.model.entity.InterfaceInfo;
 
+import com.gcq.project.model.entity.User;
 import com.gcq.project.model.enums.InterfaceStatusEnum;
 import com.gcq.project.service.InterfaceInfoService;
 import com.gcq.project.mapper.InterfaceInfoMapper;
+import com.google.gson.Gson;
 import org.apache.commons.lang3.ObjectUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
+import java.util.Map;
 
 /**
 * @author guochuqu
@@ -27,6 +33,9 @@ public class InterfaceInfoServiceImpl extends ServiceImpl<InterfaceInfoMapper, I
 
     @Resource
      private InterfaceInfoMapper interfaceInfoMapper;
+
+    @Resource
+    private UserServiceImpl userService;
 
     @Override
     public void validInterfaceInfo(InterfaceInfo interfaceInfo, boolean add) {
@@ -68,6 +77,26 @@ public class InterfaceInfoServiceImpl extends ServiceImpl<InterfaceInfoMapper, I
         interfaceInfo.setStatus(InterfaceStatusEnum.OFFLINE.getValue());
         interfaceInfoMapper.update(interfaceInfo, new QueryWrapper<InterfaceInfo>().eq("id", interfaceInfo.getId()));
         return true;
+    }
+
+    @Override
+    public Object invokeInterfaceInfo(Long id, String requestParams, HttpServletRequest request) {
+        InterfaceInfo interfaceInfo = interfaceInfoMapper.selectById(id);
+        if (interfaceInfo == null) {
+            throw new BusinessException(ErrorCode.PARAMS_ERROR, "接口不存在");
+        }
+        if (InterfaceStatusEnum.OFFLINE.getValue() == (interfaceInfo.getStatus())) {
+            throw new BusinessException(ErrorCode.PARAMS_ERROR, "接口已下线");
+        }
+
+        User loginUser = userService.getLoginUser(request);
+        String accessKey = loginUser.getAccessKey();
+        String secretKey = loginUser.getSecretKey();
+        GcqClient gcqClient = new GcqClient(accessKey,secretKey);
+        Gson gson = new Gson();
+        UserLogin userLogin = gson.fromJson(requestParams, UserLogin.class);
+        String s = gcqClient.postByUserName(userLogin);
+        return s;
     }
 
 

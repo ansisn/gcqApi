@@ -2,12 +2,14 @@ package com.gcq.project.controller;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.gcq.gcqclientsdk.client.GcqClient;
 import com.gcq.project.annotation.AuthCheck;
 import com.gcq.project.common.*;
 import com.gcq.project.constant.CommonConstant;
 import com.gcq.project.exception.BusinessException;
 
 import com.gcq.project.model.dto.interfaceInfo.InterfaceInfoAddRequest;
+import com.gcq.project.model.dto.interfaceInfo.InterfaceInfoInvokeRequest;
 import com.gcq.project.model.dto.interfaceInfo.InterfaceInfoQueryRequest;
 import com.gcq.project.model.dto.interfaceInfo.InterfaceInfoUpdateRequest;
 import com.gcq.project.model.entity.InterfaceInfo;
@@ -213,7 +215,12 @@ public class InterfaceInfoController {
           return ResultUtils.success(onlineStatus);
     }
 
-    // 接口下线
+    /**
+     * 下线接口
+     * @param idRequest
+     * @param request
+     * @return
+     */
     @PutMapping("/offline")
     public BaseResponse<Boolean> offlineInterfaceInfo(@RequestBody IdRequest idRequest, HttpServletRequest request){
 
@@ -232,5 +239,25 @@ public class InterfaceInfoController {
 
         return ResultUtils.success(offlineStatus);
     }
+
+    /**
+     * 测试调用接口
+     * @param invokeRequest
+     * @param request
+     * @return
+     */
+    @PostMapping("/invoke")
+    public BaseResponse<Object> invokeInterfaceInfo(@RequestBody InterfaceInfoInvokeRequest invokeRequest, HttpServletRequest request){
+
+        if((invokeRequest == null || invokeRequest.getId() == null) || (StringUtils.isBlank(invokeRequest.getRequestParams()))){
+            throw new BusinessException(ErrorCode.NOT_FOUND_ERROR);
+        }
+        Long id = invokeRequest.getId();
+        String requestParams = invokeRequest.getRequestParams();
+        Object result = interfaceInfoService.invokeInterfaceInfo(id,requestParams,request);
+
+       return ResultUtils.success(result);
+    }
+
 
 }
