@@ -1,7 +1,8 @@
 package com.gcq.project.mapper;
 
+
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.gcq.project.model.entity.User;
+import com.gcq.gcqcommon.model.entity.User;
 
 /**
  * @Entity com.yupi.project.model.domain.User

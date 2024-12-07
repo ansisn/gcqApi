@@ -1,21 +1,33 @@
 package com.gcq.gcqgateway;
 
+
+import com.gcq.gcqcommon.service.UserInterfaceInfoService;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.dubbo.config.annotation.DubboReference;
 import org.springframework.cloud.gateway.filter.GatewayFilterChain;
 import org.springframework.cloud.gateway.filter.GlobalFilter;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.core.annotation.Order;
 import org.springframework.http.server.reactive.ServerHttpRequest;
+import org.springframework.stereotype.Component;
 import org.springframework.web.server.ServerWebExchange;
 import reactor.core.publisher.Mono;
 
 import java.lang.annotation.Annotation;
 
+@Component
 @Slf4j
 public class CustomGlobalFilter implements GlobalFilter, Order {
+
+
+    @DubboReference(scope = "remote")
+    private UserInterfaceInfoService userInterfaceInfoService;
+
     @Override
     public Class<? extends Annotation> annotationType() {
         return null;
     }
+
 
     @Override
     public Mono<Void> filter(ServerWebExchange exchange, GatewayFilterChain chain) {
@@ -27,8 +39,9 @@ public class CustomGlobalFilter implements GlobalFilter, Order {
                 log.info("请求方法：{}",request.getMethod());
                 String hostString = request.getLocalAddress().getHostString();
                 log.info("请求ip：{}",hostString);
+        UserInterfaceInfoService userInterfaceInfoService1 = userInterfaceInfoService;
 
-                //2.黑自名单
+        //2.黑自名单
                 //4.用户鉴权（判断ak、sk是否合法）
                  //5。请求的模拟接口是否存在？
                 //6。请求转发，调用模拟接口

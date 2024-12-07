@@ -1,8 +1,9 @@
 package com.gcq.project.service;
 
 
+
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.gcq.project.model.entity.User;
+import com.gcq.gcqcommon.model.entity.User;
 
 import javax.servlet.http.HttpServletRequest;
 

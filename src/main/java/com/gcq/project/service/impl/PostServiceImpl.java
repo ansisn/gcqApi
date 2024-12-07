@@ -1,12 +1,12 @@
 package com.gcq.project.service.impl;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.gcq.project.common.ErrorCode;
+import com.gcq.gcqcommon.common.ErrorCode;
+import com.gcq.gcqcommon.model.entity.Post;
+import com.gcq.gcqcommon.model.enums.PostGenderEnum;
+import com.gcq.gcqcommon.model.enums.PostReviewStatusEnum;
 import com.gcq.project.exception.BusinessException;
 import com.gcq.project.mapper.PostMapper;
-import com.gcq.project.model.entity.Post;
-import com.gcq.project.model.enums.PostGenderEnum;
-import com.gcq.project.model.enums.PostReviewStatusEnum;
 import com.gcq.project.service.PostService;
 import org.apache.commons.lang3.ObjectUtils;
 import org.apache.commons.lang3.StringUtils;

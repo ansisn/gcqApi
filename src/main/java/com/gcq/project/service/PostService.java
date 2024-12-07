@@ -1,8 +1,7 @@
 package com.gcq.project.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.gcq.project.model.entity.Post;
-
+import com.gcq.gcqcommon.model.entity.Post;
 /**
  * @author yupili
  * @description 针对表【post(帖子)】的数据库操作Service

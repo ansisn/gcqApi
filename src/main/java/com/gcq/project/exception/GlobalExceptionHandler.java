@@ -1,8 +1,9 @@
 package com.gcq.project.exception;
 
-import com.gcq.project.common.BaseResponse;
-import com.gcq.project.common.ErrorCode;
-import com.gcq.project.common.ResultUtils;
+
+import com.gcq.gcqcommon.common.BaseResponse;
+import com.gcq.gcqcommon.common.ErrorCode;
+import com.gcq.gcqcommon.common.ResultUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;

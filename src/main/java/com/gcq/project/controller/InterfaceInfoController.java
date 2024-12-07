@@ -2,18 +2,16 @@ package com.gcq.project.controller;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.gcq.gcqclientsdk.client.GcqClient;
+import com.gcq.gcqcommon.common.*;
+import com.gcq.gcqcommon.model.dto.interfaceInfo.InterfaceInfoAddRequest;
+import com.gcq.gcqcommon.model.dto.interfaceInfo.InterfaceInfoInvokeRequest;
+import com.gcq.gcqcommon.model.dto.interfaceInfo.InterfaceInfoQueryRequest;
+import com.gcq.gcqcommon.model.dto.interfaceInfo.InterfaceInfoUpdateRequest;
+import com.gcq.gcqcommon.model.entity.InterfaceInfo;
+import com.gcq.gcqcommon.model.entity.User;
 import com.gcq.project.annotation.AuthCheck;
-import com.gcq.project.common.*;
 import com.gcq.project.constant.CommonConstant;
 import com.gcq.project.exception.BusinessException;
-
-import com.gcq.project.model.dto.interfaceInfo.InterfaceInfoAddRequest;
-import com.gcq.project.model.dto.interfaceInfo.InterfaceInfoInvokeRequest;
-import com.gcq.project.model.dto.interfaceInfo.InterfaceInfoQueryRequest;
-import com.gcq.project.model.dto.interfaceInfo.InterfaceInfoUpdateRequest;
-import com.gcq.project.model.entity.InterfaceInfo;
-import com.gcq.project.model.entity.User;
 
 import com.gcq.project.service.InterfaceInfoService;
 import com.gcq.project.service.UserService;
@@ -170,7 +168,8 @@ public class InterfaceInfoController {
      * @return
      */
     @GetMapping("/list/page")
-    public BaseResponse<Page<InterfaceInfo>> listInterfaceInfoByPage(InterfaceInfoQueryRequest interfaceInfoQueryRequest, HttpServletRequest request) {if (interfaceInfoQueryRequest == null) {
+    public BaseResponse<Page<InterfaceInfo>> listInterfaceInfoByPage(InterfaceInfoQueryRequest interfaceInfoQueryRequest, HttpServletRequest request)
+    {if (interfaceInfoQueryRequest == null) {
             throw new BusinessException(ErrorCode.PARAMS_ERROR);
         }
         InterfaceInfo interfaceInfoQuery = new InterfaceInfo();

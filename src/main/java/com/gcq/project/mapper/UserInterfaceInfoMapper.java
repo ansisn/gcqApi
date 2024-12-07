@@ -1,7 +1,8 @@
 package com.gcq.project.mapper;
 
-import com.gcq.project.model.entity.UserInterfaceInfo;
+
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.gcq.gcqcommon.model.entity.UserInterfaceInfo;
 import org.apache.ibatis.annotations.Update;
 
 /**

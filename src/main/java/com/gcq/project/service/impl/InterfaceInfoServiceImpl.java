@@ -4,12 +4,13 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.gcq.gcqclientsdk.client.GcqClient;
 import com.gcq.gcqclientsdk.model.UserLogin;
-import com.gcq.project.common.ErrorCode;
-import com.gcq.project.exception.BusinessException;
-import com.gcq.project.model.entity.InterfaceInfo;
+import com.gcq.gcqcommon.common.ErrorCode;
+import com.gcq.gcqcommon.model.entity.InterfaceInfo;
 
-import com.gcq.project.model.entity.User;
-import com.gcq.project.model.enums.InterfaceStatusEnum;
+import com.gcq.gcqcommon.model.entity.User;
+import com.gcq.gcqcommon.model.enums.InterfaceStatusEnum;
+import com.gcq.project.exception.BusinessException;
+
 import com.gcq.project.service.InterfaceInfoService;
 import com.gcq.project.mapper.InterfaceInfoMapper;
 import com.google.gson.Gson;
@@ -19,7 +20,6 @@ import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
-import java.util.Map;
 
 /**
 * @author guochuqu

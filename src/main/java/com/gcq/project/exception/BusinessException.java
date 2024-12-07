@@ -1,7 +1,6 @@
 package com.gcq.project.exception;
 
-import com.gcq.project.common.ErrorCode;
-
+import com.gcq.gcqcommon.common.ErrorCode;
 /**
  * 自定义异常类
  *

@@ -4,7 +4,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.gcq</groupId>
     <artifactId>gcq-client-sdk</artifactId>
-    <version>0.0.2</version>
+    <version>0.0.3</version>
     <name>gcq-client-sdk</name>
     <description>gcq-client-sdk</description>
     <properties>

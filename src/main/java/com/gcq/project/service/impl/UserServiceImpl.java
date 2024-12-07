@@ -1,11 +1,13 @@
 package com.gcq.project.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.gcq.project.common.ErrorCode;
+import com.gcq.gcqcommon.common.ErrorCode;
+import com.gcq.gcqcommon.model.entity.User;
 import com.gcq.project.exception.BusinessException;
 import com.gcq.project.mapper.UserMapper;
-import com.gcq.project.model.entity.User;
+
 import com.gcq.project.service.UserService;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;

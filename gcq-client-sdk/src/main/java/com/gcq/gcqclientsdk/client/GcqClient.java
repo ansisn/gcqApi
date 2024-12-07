@@ -15,32 +15,29 @@ public class GcqClient {
 
     private String secretKey;
 
-
+    public static final String BASE_URL = "http://localhost:10010/api";
     public GcqClient(String accessKey, String secretKey) {
         this.accessKey = accessKey;
         this.secretKey = secretKey;
     }
 
-
-
-
     public String getName(){
         HashMap<String, Object> paramMap = new HashMap<>();
         paramMap.put("name", "柳欢");
-        String result3= HttpUtil.get("http://localhost:8123/api/name/", paramMap);
+        String result3= HttpUtil.get(BASE_URL + "/name/", paramMap);
         return result3;
     }
     public String postName(String name){
         HashMap<String, Object> paramMap = new HashMap<>();
         paramMap.put("name", name);
-        String result3= HttpUtil.post("http://localhost:8123/api/name/", paramMap);
+        String result3= HttpUtil.post(BASE_URL + "/name/", paramMap);
         return result3;
     }
 
     public String postByUserName(UserLogin userLogin){
         userLogin.setUsername(userLogin.getUsername());
         String json = JSONUtil.toJsonStr(userLogin);
-        String result2 = HttpRequest.post("http://localhost:8123/api/name/user")
+        String result2 = HttpRequest.post(BASE_URL + "/name/user")
                 .addHeaders(getHeader(userLogin.getUsername()))
                 .body(json)
                 .execute().body();

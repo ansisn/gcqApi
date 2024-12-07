@@ -22,3 +22,19 @@ logging:
           gateway: trace
 
 
+dubbo:
+  registry:
+    address: nacos://${nacos.address:127.0.0.1}:8848?username=nacos&password=nacos
+    # This will enable application-level service discovery only (the recommended service discovery method for Dubbo3).
+    # For users upgrading from Dubbo2.x, please set the value to 'all' for smooth migration.
+    register-mode: instance
+  application:
+    qos-enable: true
+    name: GcqGatewayApplication
+    qos-port: 22222
+    qos-accept-foreign-ip: false
+    logger: slf4j
+  reference:
+    interface: com.gcq.gcqcommon.service.UserInterfaceInfoService
+    version: 1.0.0
+    group: testGroup

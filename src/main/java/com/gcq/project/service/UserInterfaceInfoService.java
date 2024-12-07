@@ -1,7 +1,8 @@
 package com.gcq.project.service;
 
-import com.gcq.project.model.entity.UserInterfaceInfo;
+
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.gcq.gcqcommon.model.entity.UserInterfaceInfo;
 
 /**
 * @author guochuqu

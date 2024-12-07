@@ -1,10 +1,10 @@
 package com.gcq.project.aop;
 
 import com.baomidou.mybatisplus.core.toolkit.CollectionUtils;
+import com.gcq.gcqcommon.common.ErrorCode;
+import com.gcq.gcqcommon.model.entity.User;
 import com.gcq.project.annotation.AuthCheck;
-import com.gcq.project.common.ErrorCode;
 import com.gcq.project.exception.BusinessException;
-import com.gcq.project.model.entity.User;
 import com.gcq.project.service.UserService;
 import org.apache.commons.lang3.StringUtils;
 import org.aspectj.lang.ProceedingJoinPoint;

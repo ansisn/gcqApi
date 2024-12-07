@@ -2,18 +2,20 @@ package com.gcq.project.controller;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.gcq.gcqcommon.common.BaseResponse;
+import com.gcq.gcqcommon.common.DeleteRequest;
+import com.gcq.gcqcommon.common.ErrorCode;
+import com.gcq.gcqcommon.common.ResultUtils;
+import com.gcq.gcqcommon.model.dto.post.PostAddRequest;
+import com.gcq.gcqcommon.model.dto.post.PostQueryRequest;
+import com.gcq.gcqcommon.model.dto.post.PostUpdateRequest;
+import com.gcq.gcqcommon.model.entity.Post;
+import com.gcq.gcqcommon.model.entity.User;
 import com.gcq.project.annotation.AuthCheck;
-import com.gcq.project.common.BaseResponse;
-import com.gcq.project.common.DeleteRequest;
-import com.gcq.project.common.ErrorCode;
-import com.gcq.project.common.ResultUtils;
+
 import com.gcq.project.constant.CommonConstant;
 import com.gcq.project.exception.BusinessException;
-import com.gcq.project.model.dto.post.PostAddRequest;
-import com.gcq.project.model.dto.post.PostQueryRequest;
-import com.gcq.project.model.dto.post.PostUpdateRequest;
-import com.gcq.project.model.entity.Post;
-import com.gcq.project.model.entity.User;
+
 import com.gcq.project.service.PostService;
 import com.gcq.project.service.UserService;
 import lombok.extern.slf4j.Slf4j;

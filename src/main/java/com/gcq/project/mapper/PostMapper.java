@@ -1,7 +1,8 @@
 package com.gcq.project.mapper;
 
+
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.gcq.project.model.entity.Post;
+import com.gcq.gcqcommon.model.entity.Post;
 
 /**
 * @author yupili

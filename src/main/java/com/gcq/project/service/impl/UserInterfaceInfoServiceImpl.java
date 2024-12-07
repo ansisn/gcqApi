@@ -1,12 +1,14 @@
 package com.gcq.project.service.impl;
 
+
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.gcq.project.model.entity.InterfaceInfo;
-import com.gcq.project.model.entity.UserInterfaceInfo;
+import com.gcq.gcqcommon.model.entity.InterfaceInfo;
+import com.gcq.gcqcommon.model.entity.UserInterfaceInfo;
 import com.gcq.project.service.InterfaceInfoService;
 import com.gcq.project.service.UserInterfaceInfoService;
 import com.gcq.project.mapper.UserInterfaceInfoMapper;
+import org.apache.dubbo.config.annotation.DubboService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 
@@ -17,6 +19,8 @@ import javax.annotation.Resource;
 * @description 针对表【user_interface_info(接口信息)】的数据库操作Service实现
 * @createDate 2024-12-07 12:03:05
 */
+
+@DubboService
 @Service
 public class UserInterfaceInfoServiceImpl extends ServiceImpl<UserInterfaceInfoMapper, UserInterfaceInfo>
     implements UserInterfaceInfoService{
