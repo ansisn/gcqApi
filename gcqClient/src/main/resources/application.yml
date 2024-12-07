@@ -1,0 +1,10 @@
+
+server:
+  port: 8123
+  servlet:
+    context-path: /api
+gcq:
+  api:
+    client:
+      access-key: "gcq"
+      secret-key: "cch"
